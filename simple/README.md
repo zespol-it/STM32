@@ -13,6 +13,8 @@ simple/
 │   └── main.h     # Główny plik nagłówkowy
 ├── src/           # Kod źródłowy C++
 │   └── main.cpp   # Główny plik źródłowy
+├── doc/           # Dokumentacja
+│   └── simple_uml.puml  # Diagram UML
 └── README.md      # Ten plik
 ```
 
@@ -37,6 +39,9 @@ brew install platformio
 cd simple
 pio run
 ```
+
+## Diagram UML
+![Diagram UML Simple](doc/simple_uml.png)
 
 ## Funkcje Systemu
 1. Test LED:
@@ -74,7 +79,7 @@ while (1) {
 MIT License
 
 ## Autor
-[Twoje Imię]
+Grzegorz Skotniczny (zespol-it.pl)
 
 ## Kontakt
-[Twoje dane kontaktowe] 
+g.skotniczny@gmail.com 

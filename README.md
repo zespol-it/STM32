@@ -34,7 +34,8 @@ Zbiór projektów systemów okulistycznych opartych na mikrokontrolerze STM32F4.
 │
 ├── simple/         # Projekt podstawowy
 │   ├── inc/       # Pliki nagłówkowe
-│   └── src/       # Kod źródłowy
+│   ├── src/       # Kod źródłowy
+│   └── doc/       # Dokumentacja
 │
 └── README.md      # Ten plik
 ```
@@ -90,6 +91,9 @@ pio run
 
 ### Tonometr
 ![Diagram UML Tonometru](tonometr/doc/uml/tonometr_uml.png)
+
+### Simple
+![Diagram UML Simple](simple/doc/simple_uml.png)
 
 ## Funkcje Systemów
 

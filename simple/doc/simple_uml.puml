@@ -1,0 +1,37 @@
+@startuml
+
+package "Simple Project" {
+    class Main {
+        +HAL_Init()
+        +SystemClock_Config()
+        +MX_GPIO_Init()
+        +MX_USART2_UART_Init()
+        +Test_LED_Pattern()
+        +Test_UART_Communication()
+    }
+
+    class GPIO {
+        +LED_Pin
+        +LED_GPIO_Port
+        +Init()
+        +Toggle()
+    }
+
+    class UART {
+        +huart2
+        +Init()
+        +Transmit()
+        +Receive()
+    }
+
+    class SystemClock {
+        +Config()
+        +GetHCLKFreq()
+    }
+}
+
+Main --> GPIO : uses
+Main --> UART : uses
+Main --> SystemClock : uses
+
+@enduml 
