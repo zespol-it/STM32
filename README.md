@@ -1,55 +1,138 @@
-# STM32 Project with Verilog Integration
+# Systemy Okulistyczne - STM32
 
-## Project Structure
+## Opis Projektu
+Zbiór projektów systemów okulistycznych opartych na mikrokontrolerze STM32F4. Projekt zawiera:
+
+1. **Perymetr** - system testowy pola widzenia
+   - Generowanie wzorców testowych w Verilog
+   - Śledzenie ruchu oka
+   - Wyświetlanie wyników
+
+2. **Tonometr** - system pomiaru ciśnienia wewnątrzgałkowego
+   - Pomiar ciśnienia
+   - Kalibracja czujnika
+   - Zapisywanie wyników
+
+3. **Simple** - podstawowy projekt demonstracyjny
+   - Test LED
+   - Komunikacja UART
+   - Podstawowe operacje GPIO
+
+## Struktura Projektu
 ```
 .
-├── src/
-│   ├── main.cpp          # Main STM32 application
-│   ├── main.h            # Header file for STM32
-│   └── verilog/
-│       └── counter.v     # Verilog counter module
-├── platformio.ini        # PlatformIO configuration
-└── README.md            # This file
+├── perymetr/       # Projekt perymetru
+│   ├── inc/       # Pliki nagłówkowe
+│   ├── src/       # Kod źródłowy
+│   ├── verilog/   # Moduły Verilog
+│   └── doc/       # Dokumentacja
+│
+├── tonometr/       # Projekt tonometru
+│   ├── inc/       # Pliki nagłówkowe
+│   ├── src/       # Kod źródłowy
+│   └── doc/       # Dokumentacja
+│
+├── simple/         # Projekt podstawowy
+│   ├── inc/       # Pliki nagłówkowe
+│   └── src/       # Kod źródłowy
+│
+└── README.md      # Ten plik
 ```
 
-## Requirements
+## Wymagania Sprzętowe
+- STM32F4 Nucleo
+- Wyświetlacz OLED (I2C) - dla perymetru i tonometru
+- Czujniki (ruch oka/ciśnienie) - dla perymetru i tonometru
+- Przyciski start/stop - dla perymetru i tonometru
+- LED na pinie PD12 - dla simple
+
+## Wymagania Programowe
 - PlatformIO
-- STM32 HAL libraries
-- Icarus Verilog (for Verilog simulation)
+- Icarus Verilog (dla perymetru)
+- STM32 HAL
+- Biblioteki Adafruit (dla perymetru i tonometru)
 
-## Building the Project
-1. Clean the project:
+## Instalacja
+1. Sklonuj repozytorium
+2. Zainstaluj PlatformIO:
 ```bash
-pio run -t clean
+brew install platformio
+```
+3. Zainstaluj Icarus Verilog (dla perymetru):
+```bash
+brew install icarus-verilog
 ```
 
-2. Build the project:
+## Kompilacja i Uruchomienie
+
+### Perymetr
 ```bash
+cd perymetr
 pio run
 ```
 
-## Components
-### STM32 Application
-- Main application running on STM32F4 microcontroller
-- UART communication at 115200 baud
-- LED control functionality
-
-### Verilog Module
-- 8-bit counter implementation
-- Clock and reset inputs
-- Synchronous reset functionality
-
-## Usage
-1. Connect STM32 board to your computer
-2. Upload the firmware:
+### Tonometr
 ```bash
-pio run -t upload
+cd tonometr
+pio run
 ```
 
-3. Monitor serial output:
+### Simple
 ```bash
-pio device monitor
+cd simple
+pio run
 ```
 
-## License
+## Diagramy UML
+
+### Perymetr
+![Diagram UML Perymetru](perymetr/doc/uml/perymetr_uml.png)
+
+### Tonometr
+![Diagram UML Tonometru](tonometr/doc/uml/tonometr_uml.png)
+
+## Funkcje Systemów
+
+### Perymetr
+1. Generowanie wzorców testowych:
+   - 8 różnych wzorców
+   - Kontrola jasności
+   - Kontrola prędkości
+   - Synchronizacja z STM32
+
+2. Śledzenie ruchu oka:
+   - Detekcja pozycji
+   - Przetwarzanie danych
+   - Zapisywanie wyników
+
+### Tonometr
+1. Pomiar ciśnienia:
+   - Odczyt z czujnika
+   - Kalibracja
+   - Przetwarzanie danych
+   - Zapisywanie wyników
+
+2. Kalibracja:
+   - Automatyczna kalibracja
+   - Zapisywanie parametrów
+   - Weryfikacja dokładności
+
+### Simple
+1. Test LED:
+   - Miganie LED 5 razy
+   - Opóźnienie 200ms między mignięciami
+   - Powtarzanie co 2 sekundy
+
+2. Komunikacja UART:
+   - Prędkość 115200 baud
+   - Wysyłanie komunikatów testowych
+   - Monitorowanie stanu systemu
+
+## Licencja
 MIT License
+
+## Autor
+Grzegorz Skotniczny (zespol-it.pl)
+
+## Kontakt
+g.skotniczny@gmail.com
