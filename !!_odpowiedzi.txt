@@ -1,0 +1,74 @@
+NAJWIĘKSZE APLIKACJE W STM32:
+
+1. Aplikacje IoT:
+   - Systemy monitorowania i sterowania
+   - Bramki IoT z obsługą wielu protokołów (WiFi, Bluetooth, LoRa)
+   - Systemy bezpieczeństwa z kamerami i czujnikami
+
+2. Systemy Przemysłowe:
+   - Sterowniki PLC
+   - Systemy HMI (Human Machine Interface)
+   - Kontrolery silników i napędów
+   - Systemy akwizycji danych
+
+3. Multimedia:
+   - Odtwarzacze audio
+   - Proste systemy wizyjne
+   - Interfejsy dotykowe
+
+4. Systemy Bezpieczeństwa:
+   - Systemy kontroli dostępu
+   - Szyfrowanie danych
+   - Bezpieczna komunikacja
+
+5. Systemy Wbudowane:
+   - Systemy operacyjne czasu rzeczywistego (RTOS)
+   - Aplikacje wielozadaniowe
+   - Systemy z interfejsem użytkownika
+
+Ograniczenia zależą od:
+- Dostępnej pamięci
+- Mocy obliczeniowej
+- Liczby interfejsów peryferyjnych
+- Wymagań czasowych (real-time)
+
+
+
+POMYSŁY NA URZĄDZENIA OKULISTYCZNE (OPTOPOL):
+
+1. Automatyczny Tonometr:
+   - STM32 może sterować precyzyjnym pomiarem ciśnienia wewnątrzgałkowego
+   - Obsługa czujników ciśnienia
+   - Komunikacja z ekranem dotykowym
+   - Zapisywanie wyników pomiarów
+
+2. Perymetr Komputerowy:
+   - Sterowanie wyświetlaczem LED/OLED
+   - Obsługa joysticka/panelu dotykowego
+   - Przetwarzanie danych z czujników ruchu oka
+   - Komunikacja z komputerem przez USB
+
+3. Autorefraktometr:
+   - Sterowanie systemem optycznym
+   - Przetwarzanie obrazu z kamery
+   - Komunikacja z drukarką
+   - Interfejs użytkownika
+
+4. System do Badań Elektrofizjologicznych:
+   - Przetwarzanie sygnałów EEG
+   - Sterowanie stymulacją wzrokową
+   - Zapisywanie i analiza danych
+   - Komunikacja z komputerem
+
+5. Lampa Szczelinowa z Kamerą:
+   - Sterowanie oświetleniem LED
+   - Obsługa kamery HD
+   - Zapisywanie obrazów
+   - Interfejs dotykowy
+
+Najbardziej zaawansowane modele STM32 (np. STM32H7) są idealne do tych zastosowań ze względu na:
+- Wysoką wydajność (do 480MHz)
+- Dużą pamięć (do 2MB Flash, 1MB RAM)
+- Wiele interfejsów (USB, Ethernet, SDIO)
+- Obsługę wyświetlaczy i kamer
+- Możliwość pracy w czasie rzeczywistym 

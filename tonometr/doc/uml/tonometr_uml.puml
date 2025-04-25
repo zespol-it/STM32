@@ -1,0 +1,75 @@
+@startuml
+package "Tonometr System" {
+    class Tonometr {
+        - PressureMeasurement_t currentMeasurement
+        - CalibrationData_t calibrationData
+        - bool measurementRunning
+        - uint32_t measurementStartTime
+        + Tonometr_Init()
+        + Tonometr_Run_Measurement()
+        + Tonometr_Process_Results()
+        + Tonometr_Save_Data()
+        + Tonometr_Display_Results()
+    }
+    
+    class PressureSensor {
+        - ADC_HandleTypeDef hadc1
+        + Tonometr_Sensor_Init()
+        + Tonometr_Read_Pressure()
+        + Tonometr_Calibrate()
+    }
+    
+    class Display {
+        - I2C_HandleTypeDef hi2c1
+        + Tonometr_Display_Init()
+        + Tonometr_Update_Display()
+    }
+    
+    class Button {
+        - GPIO_InitTypeDef GPIO_InitStruct
+        + Tonometr_Button_Init()
+        + Tonometr_Handle_Button()
+    }
+}
+
+package "Struktury Danych" {
+    class PressureMeasurement {
+        + float pressure
+        + uint32_t timestamp
+        + bool valid
+    }
+    
+    class CalibrationData {
+        + uint8_t calibration_value
+        + float offset
+        + float scale
+    }
+}
+
+Tonometr --> PressureSensor : uses
+Tonometr --> Display : uses
+Tonometr --> Button : uses
+Tonometr --> PressureMeasurement : contains
+Tonometr --> CalibrationData : contains
+
+note right of Tonometr
+  Główna klasa systemu
+  zarządzająca pomiarem
+  i wyświetlaniem
+end note
+
+note right of PressureSensor
+  Obsługa czujnika
+  ciśnienia i ADC
+end note
+
+note right of Display
+  Obsługa wyświetlacza
+  OLED przez I2C
+end note
+
+note right of Button
+  Obsługa przycisku
+  start/stop
+end note
+@enduml 

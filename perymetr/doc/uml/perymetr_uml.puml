@@ -1,0 +1,95 @@
+@startuml
+package "Perymetr System" {
+    class Perymetr {
+        - EyePosition_t eyePosition
+        - TestPattern_t testPattern
+        - bool testRunning
+        - uint32_t testStartTime
+        + Perymetr_Init()
+        + Perymetr_Run_Test()
+        + Perymetr_Process_Results()
+        + Perymetr_Save_Data()
+        + Perymetr_Display_Results()
+    }
+    
+    class PatternGenerator {
+        - uint8_t pattern_index
+        - uint32_t counter
+        - uint8_t current_pattern[8][8]
+        + Generate_Pattern()
+        + Update_Pattern()
+        + Set_Brightness()
+        + Set_Speed()
+    }
+    
+    class EyeTracker {
+        - GPIO_InitTypeDef GPIO_InitStruct
+        + Perymetr_Sensor_Init()
+        + Perymetr_Detect_Eye()
+        + Process_Eye_Movement()
+    }
+    
+    class Display {
+        - I2C_HandleTypeDef hi2c1
+        + Perymetr_Display_Init()
+        + Perymetr_Update_Display()
+        + Show_Test_Pattern()
+    }
+    
+    class Button {
+        - GPIO_InitTypeDef GPIO_InitStruct
+        + Perymetr_Button_Init()
+        + Perymetr_Handle_Button()
+    }
+}
+
+package "Struktury Danych" {
+    class EyePosition {
+        + uint8_t x
+        + uint8_t y
+        + bool detected
+    }
+    
+    class TestPattern {
+        + uint8_t pattern[8][8]
+        + uint8_t brightness
+        + uint8_t speed
+    }
+}
+
+Perymetr --> PatternGenerator : uses
+Perymetr --> EyeTracker : uses
+Perymetr --> Display : uses
+Perymetr --> Button : uses
+Perymetr --> EyePosition : contains
+Perymetr --> TestPattern : contains
+
+PatternGenerator --> Display : updates
+
+note right of Perymetr
+  Główna klasa systemu
+  zarządzająca testami
+  i wynikami
+end note
+
+note right of PatternGenerator
+  Generator wzorców
+  testowych w Verilog
+end note
+
+note right of EyeTracker
+  Śledzenie ruchu
+  oka i detekcja
+  pozycji
+end note
+
+note right of Display
+  Obsługa wyświetlacza
+  OLED przez I2C
+end note
+
+note right of Button
+  Obsługa przycisku
+  start/stop
+end note
+@enduml 
